@@ -39,9 +39,6 @@ export default () => {
           <Col span={24}>
             <DetailList/>
           </Col>
-          <Col span={24}>
-            <DIYlist/>
-          </Col>
         </ProCard.TabPane>
       ))}
     </ProCard>
