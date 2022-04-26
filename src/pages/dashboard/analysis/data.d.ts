@@ -15,6 +15,13 @@ export type SearchDataType = {
   status: number;
 };
 
+export interface CardData {
+  currentBook?: string | number;
+  currentPage?: string | number;
+  runTime?: string | number;
+  status?: boolean;
+}
+
 export type OfflineDataType = {
   name: string;
   cvr: number;
@@ -33,7 +40,7 @@ export type RadarData = {
 };
 
 export interface AnalysisData {
-  visitData: DataItem[];
+  cardData: CardData;
   visitData2: DataItem[];
   salesData: DataItem[];
   searchData: DataItem[];

@@ -8,6 +8,7 @@ import type { RangePickerProps } from 'antd/es/date-picker/generatePicker';
 import type moment from 'moment';
 import IntroduceRow from './components/IntroduceRow';
 import SalesCard from './components/SalesCard';
+import WelcomeCard from './components/WelcomeCard';
 import TopSearch from './components/TopSearch';
 import ProportionSales from './components/ProportionSales';
 import OfflineData from './components/OfflineData';
@@ -102,18 +103,19 @@ const Analysis: FC<AnalysisProps> = () => {
     <GridContent>
       <>
         <Suspense fallback={<PageLoading />}>
-          <IntroduceRow loading={loading} visitData={data?.visitData || []} />
+          <IntroduceRow loading={loading} data={data?.cardData} />
         </Suspense>
 
         <Suspense fallback={null}>
-          <SalesCard
-            rangePickerValue={rangePickerValue}
-            salesData={data?.salesData || []}
-            isActive={isActive}
-            handleRangePickerChange={handleRangePickerChange}
-            loading={loading}
-            selectDate={selectDate}
-          />
+          {/*<SalesCard*/}
+          {/*  rangePickerValue={rangePickerValue}*/}
+          {/*  salesData={data?.salesData || []}*/}
+          {/*  isActive={isActive}*/}
+          {/*  handleRangePickerChange={handleRangePickerChange}*/}
+          {/*  loading={loading}*/}
+          {/*  selectDate={selectDate}*/}
+          {/*/>*/}
+          <WelcomeCard loading={loading}/>
         </Suspense>
 
         <Row

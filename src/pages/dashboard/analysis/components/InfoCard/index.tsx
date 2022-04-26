@@ -4,6 +4,7 @@ import React from 'react';
 import classNames from 'classnames';
 import styles from './index.less';
 
+
 type totalType = () => React.ReactNode;
 
 const renderTotal = (total?: number | totalType | React.ReactNode) => {
@@ -24,27 +25,26 @@ const renderTotal = (total?: number | totalType | React.ReactNode) => {
   return totalDom;
 };
 
-export type ChartCardProps = {
+export type InfoCardProps = {
   title: React.ReactNode;
   action?: React.ReactNode;
   total?: React.ReactNode | number | (() => React.ReactNode | number);
-  footer?: React.ReactNode;
   contentHeight?: number;
   avatar?: React.ReactNode;
   style?: React.CSSProperties;
 } & CardProps;
 
-class ChartCard extends React.Component<ChartCardProps> {
+class InfoCard extends React.Component<InfoCardProps> {
   renderContent = () => {
-    const { contentHeight, title, avatar, action, total, footer, children, loading } = this.props;
+    const { contentHeight, title, avatar, action, total, children, loading } = this.props;
     if (loading) {
       return false;
     }
     return (
-      <div className={styles.chartCard}>
+      <div className={styles.infoCard}>
         <div
-          className={classNames(styles.chartTop, {
-            [styles.chartTopMargin]: !children && !footer,
+          className={classNames(styles.infoTop, {
+            [styles.infoTopMargin]: !children,
           })}
         >
           <div className={styles.avatar}>{avatar}</div>
@@ -61,15 +61,6 @@ class ChartCard extends React.Component<ChartCardProps> {
             <div className={contentHeight && styles.contentFixed}>{children}</div>
           </div>
         )}
-        {footer && (
-          <div
-            className={classNames(styles.footer, {
-              [styles.footerMargin]: !children,
-            })}
-          >
-            {footer}
-          </div>
-        )}
       </div>
     );
   };
@@ -82,16 +73,18 @@ class ChartCard extends React.Component<ChartCardProps> {
       avatar,
       action,
       total,
-      footer,
       children,
       ...rest
     } = this.props;
     return (
-      <Card loading={loading} bodyStyle={{ padding: '20px 24px 8px 24px' }} {...rest}>
+      <Card loading={loading} bodyStyle={{ padding: '20px 24px 8px 24px', height: '182px'}} {...rest}>
         {this.renderContent()}
       </Card>
     );
   }
 }
 
-export default ChartCard;
+export default InfoCard;
+
+
+
