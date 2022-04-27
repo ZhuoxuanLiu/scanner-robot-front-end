@@ -1,8 +1,8 @@
 {
-  "name": "ant-design-pro",
-  "version": "5.0.0",
+  "name": "scan-robot-web",
+  "version": "0.0.1",
   "private": true,
-  "description": "An out-of-box UI solution for enterprise applications",
+  "description": "An out-of-box solution for scanning books",
   "scripts": {
     "analyze": "cross-env ANALYZE=1 umi build",
     "build": "umi build",
@@ -27,19 +27,20 @@
     "start:no-mock": "cross-env MOCK=none UMI_ENV=dev umi dev",
     "start:no-ui": "cross-env UMI_UI=none UMI_ENV=dev umi dev",
     "start:pre": "cross-env REACT_APP_ENV=pre UMI_ENV=dev umi dev",
-    "start:test": "cross-env REACT_APP_ENV=test MOCK=none UMI_ENV=dev umi dev",
-    "pretest": "node ./tests/beforeTest",
-    "test": "umi test",
-    "test:all": "node ./tests/run-tests.js",
-    "test:component": "umi test ./src/components",
     "tsc": "tsc --noEmit"
   },
   "lint-staged": {
     "**/*.less": "stylelint --syntax less",
     "**/*.{js,jsx,ts,tsx}": "npm run lint-staged:js",
-    "**/*.{js,jsx,tsx,ts,less,md,json}": ["prettier --write"]
+    "**/*.{js,jsx,tsx,ts,less,md,json}": [
+      "prettier --write"
+    ]
   },
-  "browserslist": ["> 1%", "last 2 versions", "not ie <= 10"],
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
   "dependencies": {
     "@ant-design/charts": "^0.9.4",
     "@ant-design/icons": "^4.5.0",
@@ -107,6 +108,10 @@
     "stylelint": "^13.0.0",
     "typescript": "^4.2.2"
   },
-  "engines": { "node": ">=10.0.0" },
-  "gitHooks": { "commit-msg": "fabric verify-commit" }
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "gitHooks": {
+    "commit-msg": "fabric verify-commit"
+  }
 }

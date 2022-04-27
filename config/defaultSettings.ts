@@ -10,11 +10,10 @@ const Settings: LayoutSettings & {
   layout: 'top',
   contentWidth: 'Fluid',
   fixedHeader: false,
-  fixSiderbar: true,
   colorWeak: false,
   title: '扫描机器人',
   pwa: false,
-  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  logo: '/robot_arm.svg',
   iconfontUrl: '',
 };
 
