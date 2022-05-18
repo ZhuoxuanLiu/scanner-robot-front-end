@@ -1,8 +1,7 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import type { Request, Response } from 'express';
 
-const city = require('./geographic/city.json');
-const province = require('./geographic/province.json');
+import city from './geographic/city.json';
+import province from './geographic/province.json';
 
 function getProvince(_: Request, res: Response) {
   return res.json({

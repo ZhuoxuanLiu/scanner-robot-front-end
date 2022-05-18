@@ -1,55 +1,45 @@
 import { Button } from 'antd';
-import React from 'react';
+import type {FC} from 'react';
+import React, { useState} from 'react';
 
 export type ButtonProps = {
   description: React.ReactNode;
   icon?: React.ReactNode;
+  clickFunction?: any
 };
 
-class CardButton extends React.Component<ButtonProps> {
-  state = {
-    loadings: [],
-  };
+const CardButton: FC<ButtonProps> = ({ description, icon }) => {
 
-  enterLoading = (index: number) => {
-    this.setState(({ loadings }: { loadings: boolean[] }) => {
-      const newLoadings = [...loadings];
-      newLoadings[index] = true;
+  const [loadings, setLoadings] = useState([])
 
-      return {
-        loadings: newLoadings,
-      };
+  const enterLoading = (index: number) => {
+    setLoadings(() => {
+      loadings.map((loading, i) => i === index ? true : loading)
+      return loadings
     });
-    setTimeout(() => {
-      this.setState(({ loadings }: { loadings: boolean[] }) => {
-        const newLoadings = [...loadings];
-        newLoadings[index] = false;
 
-        return {
-          loadings: newLoadings,
-        };
+    setTimeout(() => {
+      setLoadings(() => {
+        loadings.map((loading, i) => i === index ? false : loading)
+        return loadings
       });
     }, 6000);
   };
 
-  render() {
-    const { loadings } = this.state;
-    const { description, icon } = this.props;
-    return (
-      <>
-        <Button
-          type="default"
-          shape="round"
-          block
-          icon={icon}
-          loading={loadings[0]}
-          onClick={() => this.enterLoading(0)}
-        >
-          {description}
-        </Button>
-      </>
-    );
-  }
+  return (
+    <>
+      <Button
+        type="default"
+        shape="round"
+        block
+        icon={icon}
+        loading={loadings[0]}
+        onClick={() => enterLoading(0)}
+      >
+        {description}
+      </Button>
+    </>
+  );
 }
 
 export default CardButton;

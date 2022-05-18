@@ -11,11 +11,12 @@ import {
 import { CheckCircleTwoTone } from '@ant-design/icons';
 
 const ButtonPanel = () => {
+
   return (
     <Row gutter={[8, 4]}>
       <Col className="gutter-row" span={12}>
         <div style={{ width: '100%' }}>
-          <CardButton icon={<PoweroffOutlined />} description={'启动'} />
+          <CardButton icon={<PoweroffOutlined />} description={'启动'}/>
         </div>
       </Col>
       <Col className="gutter-row" span={12}>
@@ -37,7 +38,8 @@ const ButtonPanel = () => {
   );
 };
 
-const ButtonCard = ({ loading, status }: { loading: boolean; status: boolean | undefined }) => {
+const ButtonCard = ({ loading, status }:
+                      { loading: boolean; status: boolean | undefined }) => {
   return (
     <ICard
       bordered={false}

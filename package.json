@@ -71,6 +71,8 @@
     "react-fittext": "^1.0.0",
     "react-helmet-async": "^1.0.4",
     "react-router": "^4.3.1",
+    "react-use-websocket": "3.0.0",
+    "redux-logger": "^3.0.6",
     "umi": "^3.5.0",
     "umi-serve": "^1.9.10"
   },

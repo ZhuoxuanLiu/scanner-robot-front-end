@@ -14,12 +14,13 @@ const topColResponsiveProps = {
   style: { marginBottom: 24 },
 };
 
-const IntroduceRow = ({ loading, data }: { loading: boolean; data: CardData | undefined }) => {
-  console.log(data?.status, 'row');
+const IntroduceRow = ({ loading, data }:
+                        { loading: boolean; data: CardData | undefined }) => {
+
   return (
     <Row gutter={24}>
       <Col {...topColResponsiveProps}>
-        <ButtonCard loading={loading} status={data?.status} />
+        <ButtonCard loading={loading} status={data?.status}/>
       </Col>
 
       <Col {...topColResponsiveProps}>
