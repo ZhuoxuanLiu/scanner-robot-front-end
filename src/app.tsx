@@ -5,12 +5,10 @@ import { history } from 'umi';
 import RightContent from '@/components/RightContent';
 import Footer from '@/components/Footer';
 import { currentUser as queryCurrentUser } from './services/login/api';
-import { createLogger } from 'redux-logger';
 import { message } from 'antd';
 
 export const dva = {
   config: {
-    onAction: createLogger(),
     onError(e: Error) {
       message.error(e.message, 3);
     },
@@ -55,7 +53,6 @@ export async function getInitialState(): Promise<{
     settings: {},
   };
 }
-
 
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
 export const layout: RunTimeLayoutConfig = ({ initialState }) => {
