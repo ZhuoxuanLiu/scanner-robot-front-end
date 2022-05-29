@@ -43,6 +43,7 @@ const Login: React.FC = () => {
     try {
       // 登录
       const msg = await login({ ...values, type });
+      console.log(msg)
       if (msg.status === 'ok') {
         const defaultLoginSuccessMessage = intl.formatMessage({
           id: 'pages.login.success',
@@ -57,7 +58,6 @@ const Login: React.FC = () => {
         history.push(redirect || '/');
         return;
       }
-      console.log(msg);
       // 如果失败去设置用户错误信息
       setUserLoginState(msg);
     } catch (error) {
@@ -72,7 +72,7 @@ const Login: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.lang} data-lang>
+      <div className={styles.lang}>
         {SelectLang && <SelectLang />}
       </div>
       <div className={styles.content}>

@@ -5,7 +5,7 @@ import type { CardData } from '@/pages/dashboard/data.d';
 const cardData: CardData = {
   currentBook: 3,
   runTime: 120,
-  status: true,
+  status: 1,
 };
 
 const fakeCardData = (_: Request, res: Response) => {

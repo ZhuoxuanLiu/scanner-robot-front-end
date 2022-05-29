@@ -17,6 +17,7 @@ const topColResponsiveProps = {
 const IntroduceRow = ({ loading, data }:
                         { loading: boolean; data: CardData | undefined }) => {
 
+
   return (
     <Row gutter={24}>
       <Col {...topColResponsiveProps}>

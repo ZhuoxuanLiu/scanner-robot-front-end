@@ -39,7 +39,7 @@ const ButtonPanel = () => {
 };
 
 const ButtonCard = ({ loading, status }:
-                      { loading: boolean; status: boolean | undefined }) => {
+                      { loading: boolean; status: number | undefined }) => {
   return (
     <ICard
       bordered={false}
@@ -55,11 +55,7 @@ const ButtonCard = ({ loading, status }:
         <div style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}>
           <Space>
             <span>当前运行状态:</span>
-            {status ? (
-              <CheckCircleTwoTone twoToneColor="#52c41a" />
-            ) : (
-              <StopOutlined twoToneColor="#f5222d" />
-            )}
+            {status && status > 0 ? (<CheckCircleTwoTone twoToneColor="#52c41a" />) : (<StopOutlined twoToneColor="#f5222d" />)}
           </Space>
         </div>
       }

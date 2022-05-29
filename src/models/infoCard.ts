@@ -3,8 +3,8 @@ import request from "@/utils/request";
 import type {CardData} from "@/pages/dashboard/data";
 
 
-export interface dashboardModelType {
-  namespace: 'dashboard';
+export interface infoCardModelType {
+  namespace: 'infoCard';
   state: {
     cardData: CardData
   };
@@ -12,39 +12,38 @@ export interface dashboardModelType {
     query: Effect;
   };
   reducers: {
-    setDashboardData: Reducer<CardData>;
+    setInfoCardData: Reducer<CardData>;
   };
   subscriptions: { setup: Subscription };
 }
 
-const getDashboardData = () => {
-  // console.log(request.get('/api/info_card'))
-  return request.get('/api/info_card')
+const getInfoCardData = () => {
+  return request.get('/api/dashboard/info_card')
 }
 
-const dashboardModel: dashboardModelType = {
-  namespace: 'dashboard',
+const infoCardModel: infoCardModelType = {
+  namespace: 'infoCard',
 
   state: {
     cardData: {
       currentBook: null,
       runTime: null,
-      status: false,
+      status: 0,
     },
   },
 
   effects: {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     *query({payload, callback}, { call, put }) {
-      const response = yield call(getDashboardData)
+      const response = yield call(getInfoCardData)
       yield put({
-        type: 'setDashboardData',
-        payload: response.cardData
+        type: 'setInfoCardData',
+        payload: response.data
       })
     },
   },
   reducers: {
-    setDashboardData(state, action) {
+    setInfoCardData(state, action) {
       return {
         ...state,
         cardData: action.payload,
@@ -65,4 +64,4 @@ const dashboardModel: dashboardModelType = {
   },
 };
 
-export default dashboardModel;
+export default infoCardModel;

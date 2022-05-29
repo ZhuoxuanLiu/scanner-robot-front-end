@@ -10,10 +10,12 @@ const { REACT_APP_ENV } = process.env;
 export default defineConfig({
   hash: true,
   antd: {},
+  mock: {
+    exclude:["mock/infoCard.ts"]
+  },
   dva: {
     hmr: true,
     lazyLoad: true,
-
   },
   layout: {
     // https://umijs.org/zh-CN/plugins/plugin-layout

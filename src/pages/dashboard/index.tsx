@@ -13,18 +13,33 @@ import type { CardData } from './data.d';
 import {useModel} from "@@/plugin-model/useModel";
 
 type AnalysisProps = {
-  dashboard: any,
+  infoCard: any,
   loading: boolean,
   dispatch: any,
 };
 
-const Analysis: FC<AnalysisProps> = ({ dashboard, loading, dispatch }) => {
+const Analysis: FC<AnalysisProps> = ({ infoCard, loading, dispatch }) => {
 
   const { connector } = useModel('webSocket', model => ({ connector: model.handleClickChangeSocketUrl }));
 
-  const { cardData } = dashboard
+  const { cardData } = infoCard
+
+  const { count, setInfoCard } = useModel('refresh',
+    model => ({ count: model.infoCard, setInfoCard: model.setInfoCard }));
+
+  useEffect(() => {
+    dispatch({type: 'infoCard/query',});
+    setInfoCard(() => 0)
+  }, [count])
+
+  useEffect(() => {
+    console.log(count)
+  }, [count])
 
   useEffect(connector,[])
+  useEffect(() => {
+    console.log("effect!!!!")
+  },[])
 
   return (
     <GridContent>
@@ -41,4 +56,4 @@ const Analysis: FC<AnalysisProps> = ({ dashboard, loading, dispatch }) => {
   );
 };
 
-export default connect(({ dashboard }: { dashboard: { cardData: CardData} }) => ({ dashboard }),)(Analysis);
+export default connect(({ infoCard }: { infoCard: { cardData: CardData} }) => ({ infoCard }),)(Analysis);
